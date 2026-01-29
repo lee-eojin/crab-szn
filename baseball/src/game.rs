@@ -38,10 +38,6 @@ impl Game {
             .collect()
     }
 
-    pub fn answer(&self) -> &Vec<u8> {
-        &self.answer
-    }
-
     pub fn judge(&mut self, guess: &Vec<u8>) -> Score {
         self.attempts += 1;
 

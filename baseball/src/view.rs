@@ -1,13 +1,5 @@
-use crate::constants::{MSG_ANSWER, MSG_GUESS, MSG_STRIKE, MSG_BALL, MSG_OUT, MSG_WIN, DIGIT_COUNT};
+use crate::constants::{MSG_STRIKE, MSG_BALL, MSG_OUT, MSG_WIN};
 use crate::game::Score;
-
-pub fn print_answer(answer: &Vec<u8>) {
-    println!("{}{:?}", MSG_ANSWER, answer);
-}
-
-pub fn print_guess(guess: &Vec<u8>) {
-    println!("{}{:?}", MSG_GUESS, guess);
-}
 
 pub fn print_score(score: &Score) {
     if score.strike == 0 && score.ball == 0 {
