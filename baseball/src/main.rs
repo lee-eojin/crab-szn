@@ -1,12 +1,13 @@
 mod constants;
 mod game;
+mod view;
 
 use game::Game;
 
 fn main() {
     let game = Game::new();
-    println!("정답: {:?}", game.answer());
+    view::print_answer(game.answer());
 
     let guess = game.get_input();
-    println!("입력: {:?}", guess);
+    view::print_guess(&guess);
 }

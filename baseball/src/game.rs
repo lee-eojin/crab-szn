@@ -1,7 +1,7 @@
 use rand::seq::SliceRandom;
 use std::io::{self, Write};
 
-use crate::constants::{DIGIT_COUNT, MIN_NUM, MAX_NUM};
+use crate::constants::{DIGIT_COUNT, MIN_NUM, MAX_NUM, MSG_INPUT_PROMPT};
 
 pub struct Game {
     answer: Vec<u8>,
@@ -20,7 +20,7 @@ impl Game {
     }
 
     pub fn get_input(&self) -> Vec<u8> {
-        print!("숫자를 입력하세요: ");
+        print!("{}", MSG_INPUT_PROMPT);
         io::stdout().flush().unwrap();
 
         let mut input = String::new();
