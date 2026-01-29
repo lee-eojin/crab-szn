@@ -5,9 +5,17 @@ mod view;
 use game::Game;
 
 fn main() {
-    let game = Game::new();
-    view::print_answer(game.answer());
+    let mut game = Game::new();
 
-    let guess = game.get_input();
-    view::print_guess(&guess);
+    loop {
+        let guess = game.get_input();
+        let score = game.judge(&guess);
+
+        view::print_score(&score);
+
+        if score.is_win() {
+            view::print_win(game.attempts());
+            break;
+        }
+    }
 }

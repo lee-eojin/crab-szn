@@ -42,7 +42,9 @@ impl Game {
         &self.answer
     }
 
-    pub fn judge(&self, guess: &Vec<u8>) -> Score {
+    pub fn judge(&mut self, guess: &Vec<u8>) -> Score {
+        self.attempts += 1;
+
         let mut strike = 0;
         let mut ball = 0;
 
@@ -55,5 +57,15 @@ impl Game {
         }
 
         Score { strike, ball }
+    }
+
+    pub fn attempts(&self) -> u32 {
+        self.attempts
+    }
+}
+
+impl Score {
+    pub fn is_win(&self) -> bool {
+        self.strike == DIGIT_COUNT as u8
     }
 }
