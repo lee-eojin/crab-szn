@@ -8,6 +8,11 @@ pub struct Game {
     attempts: u32,
 }
 
+pub struct Score {
+    pub strike: u8,
+    pub ball: u8,
+}
+
 impl Game {
     pub fn new() -> Self {
         let mut nums: Vec<u8> = (MIN_NUM..=MAX_NUM).collect();
@@ -35,5 +40,20 @@ impl Game {
 
     pub fn answer(&self) -> &Vec<u8> {
         &self.answer
+    }
+
+    pub fn judge(&self, guess: &Vec<u8>) -> Score {
+        let mut strike = 0;
+        let mut ball = 0;
+
+        for (i, g) in guess.iter().enumerate() {
+            if self.answer[i] == *g {
+                strike += 1;
+            } else if self.answer.contains(g) {
+                ball += 1;
+            }
+        }
+
+        Score { strike, ball }
     }
 }
