@@ -1,6 +1,8 @@
 use rand::seq::SliceRandom;
 use std::io::{self, Write};
 
+use crate::constants::{DIGIT_COUNT, MIN_NUM, MAX_NUM};
+
 pub struct Game {
     answer: Vec<u8>,
     attempts: u32,
@@ -8,11 +10,11 @@ pub struct Game {
 
 impl Game {
     pub fn new() -> Self {
-        let mut nums: Vec<u8> = (1..=9).collect();
+        let mut nums: Vec<u8> = (MIN_NUM..=MAX_NUM).collect();
         nums.shuffle(&mut rand::thread_rng());
 
         Game {
-            answer: nums[0..3].to_vec(),
+            answer: nums[0..DIGIT_COUNT].to_vec(),
             attempts: 0,
         }
     }

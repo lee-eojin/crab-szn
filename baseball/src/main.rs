@@ -1,3 +1,4 @@
+mod constants;
 mod game;
 
 use game::Game;
