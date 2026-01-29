@@ -1,12 +1,11 @@
-use rand::seq::SliceRandom;
+mod game;
 
-fn generate_number() -> Vec<u8> {
-    let mut nums: Vec<u8> = (1..=9).collect();
-    nums.shuffle(&mut rand::thread_rng());
-    nums[0..3].to_vec()
-}
+use game::Game;
 
 fn main() {
-    let answer = generate_number();
-    println!("정답: {:?}", answer);
+    let game = Game::new();
+    println!("정답: {:?}", game.answer());
+
+    let guess = game.get_input();
+    println!("입력: {:?}", guess);
 }
